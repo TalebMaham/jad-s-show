@@ -1,39 +1,24 @@
 package com.jad;
 
-import com.jad.customer.*;
-import com.jad.show.*;
+import com.jad.customer.Spectator;
+import com.jad.show.ConcertShow;
+import com.jad.show.MovieShow;
+import com.jad.show.MovieType;
+import com.jad.show.StreetShow;
+import com.jad.show.TheaterShow;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Main {
+    public static void main(String[] args) {
+        Spectator spectator = new Spectator("John", "Doe");
 
-@SuppressWarnings("UtilityClassCanBeEnum")
-public final class Main {
-    public static void main(final String[] args) {
-        final ISpectator jad = new Spectator("Jean-Aymeric", "Diet");
+        ConcertShow concert = new ConcertShow("Rock Night", "A night of rock music", "The Rolling Stones");
+        MovieShow movie = new MovieShow("Inception", "A mind-bending thriller", "Christopher Nolan", "2010", MovieType.SCIENCE_FICTION);
+        StreetShow streetShow = new StreetShow("Street Magic", "Magic tricks", "David Blaine", "Criss Angel");
+        TheaterShow theater = new TheaterShow("Hamlet", "A Shakespeare classic", "Kenneth Branagh", "Ralph Fiennes", "Judi Dench");
 
-        final List<IShow> shows = new ArrayList<>();
-        shows.add(new MovieShow("Titre du film",
-                "Description du film",
-                "Nom du réalisateur",
-                "2023",
-                MovieType.SCIENCE_FICTION));
-        shows.add(new TheaterShow("Titre du spectacle de théâtre",
-                "Description du spectacle de théâtre",
-                "Nom du metteur en scène",
-                "Nom de l'acteur 1",
-                "Nom de l'acteur 2",
-                "Nom de l'acteur 3"));
-        shows.add(new StreetShow("Titre du spectacle de rue",
-                "Description du spectacle de rue",
-                "Nom de l'artiste 1",
-                "Nom de l'artiste 2",
-                "Nom de l'artiste 3"));
-        shows.add(new ConcertShow("Titre du concert",
-                "Description du concert",
-                "Nom de l'artiste ou du groupe"));
-
-        for (final IShow show : shows) {
-            jad.watch(show);
-        }
+        spectator.watch(concert);
+        spectator.watch(movie);
+        spectator.watch(streetShow);
+        spectator.watch(theater);
     }
 }

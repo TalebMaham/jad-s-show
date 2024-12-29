@@ -1,6 +1,7 @@
 package com.jad.customer;
 
 import com.jad.show.IShow;
+import com.jad.show.WatchStrategy;
 
 public class Spectator implements ISpectator {
     private final String firstName;
@@ -23,6 +24,7 @@ public class Spectator implements ISpectator {
 
     @Override
     public void watch(final IShow show) {
-        // TODO: Implement this method
+        WatchStrategy strategy = WatchStrategyFactory.getStrategy(show);
+        strategy.watch(show);
     }
 }
